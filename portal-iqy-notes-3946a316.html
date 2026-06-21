@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱奇艺体育 – 赛事导航与场景指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f3f5f7;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 24px 20px 40px;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* 导航 */
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 12px 28px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e6edf2;
+      margin-bottom: 36px;
+    }
+
+    .nav-logo {
+      font-weight: 600;
+      font-size: 1.1rem;
+      letter-spacing: 0.3px;
+      color: #0b2b40;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #2c3e50;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: #0066aa;
+    }
+
+    /* Hero 区 */
+    .hero {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 44px 36px 40px;
+      margin-bottom: 32px;
+      border: 1px solid #e2eaf0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      color: #0a1e2b;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      max-width: 700px;
+      color: #2f4052;
+      margin-bottom: 24px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: #e8f0fa;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #1f5880;
+      border: 1px solid #cbddee;
+    }
+
+    /* 卡片网格 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 28px 24px;
+      border: 1px solid #e0e8ef;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .card:hover {
+      border-color: #b8cedf;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    }
+
+    .card h3 {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #0b2a3c;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: #33475b;
+      margin-bottom: 20px;
+    }
+
+    .card .badge {
+      display: inline-block;
+      background: #f0f6fc;
+      padding: 2px 12px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #1e5882;
+      border: 1px solid #d1e0ed;
+    }
+
+    /* 说明 / FAQ 段落 */
+    .faq-section {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 32px 32px 28px;
+      border: 1px solid #e2eaf0;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+      margin-bottom: 28px;
+    }
+
+    .faq-section h2 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      color: #0b2739;
+    }
+
+    .faq-item {
+      margin-bottom: 18px;
+    }
+
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #1b3b52;
+    }
+
+    .faq-item p {
+      font-size: 0.95rem;
+      color: #375066;
+      line-height: 1.5;
+    }
+
+    .link-sentence {
+      font-size: 0.95rem;
+      background: #f0f5fb;
+      padding: 12px 20px;
+      border-radius: 60px;
+      display: inline-block;
+      border: 1px solid #d5e2ee;
+      margin-top: 8px;
+    }
+
+    .link-sentence a {
+      color: #0066aa;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid #afcde0;
+    }
+
+    .link-sentence a:hover {
+      border-bottom-color: #0066aa;
+    }
+
+    /* 底部 */
+    .footer-note {
+      margin-top: 20px;
+      font-size: 0.8rem;
+      color: #5f7287;
+      text-align: center;
+      border-top: 1px solid #dce5ed;
+      padding-top: 24px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      .nav-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 16px 20px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 18px;
+      }
+
+      .hero {
+        padding: 28px 20px;
+      }
+
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .faq-section {
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- 顶部导航 -->
+  <header class="nav-bar">
+    <div class="nav-logo">⚡ 赛事导航</div>
+    <div class="nav-links">
+      <a href="#scenes">场景</a>
+      <a href="#faq">说明</a>
+    </div>
+  </header>
+
+  <!-- Hero 介绍 -->
+  <section class="hero">
+    <span class="hero-tag">轻量化 · 赛事信息聚合</span>
+    <h1>爱奇艺体育 · 观赛场景指南</h1>
+    <p>
+      从顶级联赛到专项锦标赛，<a href="https://portal-iqy.com" style="color:#0066aa; text-decoration: underline;">爱奇艺体育</a>整合了丰富赛事资源与多端观看方式。下文梳理三个典型使用场景，帮助不同习惯的观众快速找到适合自己的观赛路径。
+    </p>
+    <p>
+      无论是移动端即时追踪，还是大屏沉浸观看，均可在平台内完成。以下模块以实际需求出发，提供简洁参考。
+    </p>
+  </section>
+
+  <!-- 三个场景模块 -->
+  <div class="card-grid" id="scenes">
+    <div class="card">
+      <h3>📱 移动端 · 实时速览</h3>
+      <p>
+        通勤或碎片时间，通过手机浏览器或客户端随时查看比分、赛程和集锦。轻量界面适合信息快速获取，无需额外设备即可跟踪焦点战况。
+      </p>
+      <span class="badge">适配 iOS / Android</span>
+    </div>
+
+    <div class="card">
+      <h3>🖥️ 桌面沉浸 · 完整直播</h3>
+      <p>
+        电脑或平板提供更大视野，适合长时间观看整场比赛。支持多线路选择、数据面板与即时回放，深度满足资深球迷对于细节与战术的需求。
+      </p>
+      <span class="badge">1080P · 多视角</span>
+    </div>
+
+    <div class="card">
+      <h3>📺 投屏与客厅体验</h3>
+      <p>
+        通过 AirPlay、DLNA 等方式将赛事投射至电视，客厅大屏配合赛事解说与实时数据，打造家庭观赛氛围。适合周末关键场次与朋友一起欣赏。
+      </p>
+      <span class="badge">智能电视 · 投屏</span>
+    </div>
+  </div>
+
+  <!-- 常见说明 / FAQ 摘要 -->
+  <section class="faq-section" id="faq">
+    <h2>常见说明 · 赛事服务</h2>
+
+    <div class="faq-item">
+      <strong>▸ 观赛是否需要注册？</strong>
+      <p>大部分免费场次可直接观看；部分精选内容或高清直播可能需要登录账号，具体以页面提示为准。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>▸ 如何查询比赛回放？</strong>
+      <p>进入赛事栏目后选择「回放」或「集锦」标签，根据联赛或日期筛选即可找到已结束场次。</p>
+    </div>
+
+    <div class="faq-item">
+      <strong>▸ 多语言解说支持吗？</strong>
+      <p>部分焦点赛事提供原声及中文解说两条音轨，可在播放器内切换。具体以实际直播场次标注为准。</p>
+    </div>
+
+    <!-- 嵌入 a 标签的句子，不使用“进入、点击、访问”等词 -->
+    <div class="link-sentence">
+      针对以上场景，<a href="https://portal-iqy.com">爱奇艺体育</a>提供了清晰的分类与导航，你可以根据设备与偏好自由选择。
+    </div>
+  </section>
+
+  <!-- 底部（轻量提示） -->
+  <div class="footer-note">
+    页面内容仅为场景介绍，具体权益以平台实时规则为准。
+  </div>
+
+</div>
+</body>
+</html>
